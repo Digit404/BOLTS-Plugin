@@ -1,0 +1,50 @@
+# Build and IDE output
+.gradle/
+build/
+out/
+bin/
+gen/
+*.class
+*.apk
+*.ap_
+*.dex
+*.aar
+*.jar
+*.war
+*.ear
+
+# IDE settings
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS and editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+
+# Test/coverage noise
+test-results/
+test-output/
+coverage/
+tmp/
+tmp-*/
+
+# Node/Python/stray
+node_modules/
+__pycache__/
+*.pyc
+
+# Local config, keys, and artifacts
+local.properties
+debug.keystore
+
+# Third party/binary drops in random subdirs, just in case
+**/*.aar
+
+# Docs
+docs/
