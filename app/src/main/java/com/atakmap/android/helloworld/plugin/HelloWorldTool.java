@@ -21,7 +21,7 @@ public class HelloWorldTool extends AbstractPluginTool implements Disposable {
                 context.getString(R.string.app_name),
                 context.getString(R.string.app_name),
                 context.getResources().getDrawable(R.drawable.ic_launcher),
-                "com.atakmap.android.helloworld.SHOW_HELLO_WORLD");
+                "helloworld.example.webview");
 
         AtakBroadcast.getInstance().registerReceiver(br,
                 new AtakBroadcast.DocumentedIntentFilter(
