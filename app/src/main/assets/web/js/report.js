@@ -77,7 +77,6 @@ function updateReport() {
 
     el.fuelStatus = document.createElement("div");
     el.fuelStatus.classList.add("fuel-report");
-    console.log(`Fuel Remaining: ${generatedReport.expenditures.fuelRemaining} lbs`);
     el.fuelStatus.innerText = `Fuel Remaining: ${generatedReport.expenditures.fuelRemaining} lbs`;
     const fuelRatio = (generatedReport.expenditures.fuelRemaining / generatedReport.expenditures.fuelMax);
     el.fuelStatus.style.setProperty("--value", fuelRatio);
@@ -247,7 +246,7 @@ async function submitReport() {
     report.submitButton.disabled = true;
 
     try {
-        const ok = isCordova() ? await uploadReportCordova(reportText, callsign) : await uploadReportFetch(reportText);
+        const ok = await uploadReportInterface(reportText);
         if (ok) showSubmitted();
         else await showError();
     } catch (e) {
@@ -312,6 +311,17 @@ async function uploadReportFetch(reportText) {
         body: reportText,
     });
     return response.ok;
+}
+
+async function uploadReportInterface(reportText) {
+    // Check if the interface exists to avoid errors in regular browsers
+    if (window.Android && window.Android.postData) {
+        window.Android.postData(reportText);
+    } else {
+        console.log("Interface not found");
+    }
+
+    return "yippee!";
 }
 
 function showSubmitted() {

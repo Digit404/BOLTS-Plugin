@@ -82,6 +82,7 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
                 // the web view would remain inconsistent on subsequent concurrent opens
                 htmlViewer.loadUrl("about:blank");
                 htmlViewer.setWebViewClient(new Client(assetLoader));
+                htmlViewer.addJavascriptInterface(new WebAppInterface(pluginContext), "Android");
 
                 htmlViewer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                         LayoutParams.MATCH_PARENT));
@@ -145,6 +146,19 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
             Log.d(TAG, "loading progress: " + newProgress);
+        }
+    }
+
+    public static class WebAppInterface {
+        Context mContext;
+
+        WebAppInterface(Context c) {
+            mContext = c;
+        }
+
+        @android.webkit.JavascriptInterface
+        public void postData(String data) {
+            Log.d(TAG, "Data received from JS: " + data);
         }
     }
 
