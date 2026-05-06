@@ -1,0 +1,662 @@
+[
+  [
+    "9K331 Tor-M1"
+  ],
+  [
+    "ASN-209 Silver Eagle"
+  ],
+  [
+    "BJ2020"
+  ],
+  [
+    "BJ2022"
+  ],
+  [
+    "BJ80"
+  ],
+  [
+    "Boeing 737"
+  ],
+  [
+    "BZK-006"
+  ],
+  [
+    "BZK-007"
+  ],
+  [
+    "BZK-008"
+  ],
+  [
+    "Changhe Z-10"
+  ],
+  [
+    "Changhe Z-11"
+  ],
+  [
+    "Changhe Z-8",
+    "Changhe Z-18"
+  ],
+  [
+    "Chengdu J-10"
+  ],
+  [
+    "Chengdu J-20"
+  ],
+  [
+    "CS/SA-1"
+  ],
+  [
+    "CS/VP14"
+  ],
+  [
+    "CS/VP4 ATV"
+  ],
+  [
+    "CSK-131"
+  ],
+  [
+    "CSK-131 C2"
+  ],
+  [
+    "CSK-131 Recce"
+  ],
+  [
+    "CSK-141"
+  ],
+  [
+    "CSK-181"
+  ],
+  [
+    "CSK-181 C2"
+  ],
+  [
+    "CSK-181 Recce"
+  ],
+  [
+    "CSZ-181 MEDVAC"
+  ],
+  [
+    "CTL-181A"
+  ],
+  [
+    "CTL181A"
+  ],
+  [
+    "Dongfeng EQ1108"
+  ],
+  [
+    "Dongfeng EQ2050"
+  ],
+  [
+    "Dongfeng EQ2102"
+  ],
+  [
+    "Dongfeng EQ245/EQ2100"
+  ],
+  [
+    "FAW MV3"
+  ],
+  [
+    "Fubbing-class"
+  ],
+  [
+    "Fulei-class"
+  ],
+  [
+    "Fuzhong-class"
+  ],
+  [
+    "GAZ-004"
+  ],
+  [
+    "GBL-120"
+  ],
+  [
+    "GBL-130"
+  ],
+  [
+    "GBP-126"
+  ],
+  [
+    "GCZ-110"
+  ],
+  [
+    "GCZ-112"
+  ],
+  [
+    "GDG-130"
+  ],
+  [
+    "GQL-110",
+    "Type 84"
+  ],
+  [
+    "GQL-111"
+  ],
+  [
+    "GQL-120A",
+    "Type 69A"
+  ],
+  [
+    "GQL-321"
+  ],
+  [
+    "GQL-410"
+  ],
+  [
+    "GSL-110/A",
+    "Type 81"
+  ],
+  [
+    "GSL-110B"
+  ],
+  [
+    "GSL-111",
+    "WZ762A"
+  ],
+  [
+    "GSL-130"
+  ],
+  [
+    "GSL-131"
+  ],
+  [
+    "GSL-132"
+  ],
+  [
+    "GSL-133"
+  ],
+  [
+    "GSL-134"
+  ],
+  [
+    "GSL-211"
+  ],
+  [
+    "GSL-411",
+    "GSL-241"
+  ],
+  [
+    "GSL-430",
+    "GBP-128"
+  ],
+  [
+    "GZM-003"
+  ],
+  [
+    "H120 Colibri"
+  ],
+  [
+    "Haixun III"
+  ],
+  [
+    "Harbin BZK-005"
+  ],
+  [
+    "Harbin BZK-009"
+  ],
+  [
+    "Harbin Z-19"
+  ],
+  [
+    "Harbin Z-20"
+  ],
+  [
+    "Harbin Z-9"
+  ],
+  [
+    "Harbin/Changhe Z-21"
+  ],
+  [
+    "HQ-11"
+  ],
+  [
+    "HQ-16/B"
+  ],
+  [
+    "HQ-17/A"
+  ],
+  [
+    "HQ-6D"
+  ],
+  [
+    "HQ-7A/B"
+  ],
+  [
+    "Huntai-class"
+  ],
+  [
+    "Ilyushin Il-76"
+  ],
+  [
+    "Ilyushin Il-78"
+  ],
+  [
+    "Jonyang JY813"
+  ],
+  [
+    "JZ-8"
+  ],
+  [
+    "KDV002"
+  ],
+  [
+    "KJ-2000"
+  ],
+  [
+    "LD-2000"
+  ],
+  [
+    "LD-3000"
+  ],
+  [
+    "Mil Mi-17"
+  ],
+  [
+    "Mil Mi-26"
+  ],
+  [
+    "Mil Mi-8/Mil Mi-171"
+  ],
+  [
+    "MV3 MRAP"
+  ],
+  [
+    "NJ2045"
+  ],
+  [
+    "PCL-09"
+  ],
+  [
+    "PCL-161"
+  ],
+  [
+    "PCL-171"
+  ],
+  [
+    "PCL-181"
+  ],
+  [
+    "PCP-001"
+  ],
+  [
+    "PG-55/PG-65/PG-74"
+  ],
+  [
+    "PG-87"
+  ],
+  [
+    "PG-99",
+    "Type 90"
+  ],
+  [
+    "PGL-12"
+  ],
+  [
+    "PGL-625"
+  ],
+  [
+    "PGZ-09"
+  ],
+  [
+    "PGZ-88"
+  ],
+  [
+    "PGZ-95"
+  ],
+  [
+    "PH-63"
+  ],
+  [
+    "PHL-03"
+  ],
+  [
+    "PHL-11"
+  ],
+  [
+    "PHL-16"
+  ],
+  [
+    "PHL-81/90"
+  ],
+  [
+    "PHZ-89"
+  ],
+  [
+    "PL-01"
+  ],
+  [
+    "PL-59",
+    "M-46"
+  ],
+  [
+    "PL-66",
+    "D-20"
+  ],
+  [
+    "PL-96",
+    "D-30"
+  ],
+  [
+    "PLL-05"
+  ],
+  [
+    "PLL-09"
+  ],
+  [
+    "PLZ-05"
+  ],
+  [
+    "PLZ-07A/B"
+  ],
+  [
+    "PLZ-10"
+  ],
+  [
+    "PLZ-89"
+  ],
+  [
+    "PTL-02"
+  ],
+  [
+    "PTZ-89"
+  ],
+  [
+    "SA342L"
+  ],
+  [
+    "Shaanxi KJ-200"
+  ],
+  [
+    "Shaanxi KJ-500"
+  ],
+  [
+    "Shaanxi SX2190"
+  ],
+  [
+    "Shaanxi SX2220",
+    "HMV3"
+  ],
+  [
+    "Shaanxi SX2306",
+    "HMV3"
+  ],
+  [
+    "Shaanxi Y-8"
+  ],
+  [
+    "Shaanxi Y-9"
+  ],
+  [
+    "Shenyang J-11"
+  ],
+  [
+    "Shenyang J-16"
+  ],
+  [
+    "Shenyang J-8"
+  ],
+  [
+    "ShenyangJ-35"
+  ],
+  [
+    "Shijizhuang Y-5"
+  ],
+  [
+    "Sukhoi Su-27"
+  ],
+  [
+    "Sukhoi Su-30"
+  ],
+  [
+    "Sukhoi Su-35"
+  ],
+  [
+    "Taian TA4360"
+  ],
+  [
+    "Taian TA4410"
+  ],
+  [
+    "Tiger 4x4"
+  ],
+  [
+    "Tupolev Tu-154"
+  ],
+  [
+    "Type 05 ARV"
+  ],
+  [
+    "Type 05 C2"
+  ],
+  [
+    "Type 05 Recce"
+  ],
+  [
+    "Type 067",
+    "Yunnan-class"
+  ],
+  [
+    "Type 08"
+  ],
+  [
+    "Type 08 C2"
+  ],
+  [
+    "Type 14"
+  ],
+  [
+    "Type 15"
+  ],
+  [
+    "Type 19"
+  ],
+  [
+    "Type 271",
+    "Yupen-class"
+  ],
+  [
+    "Type 701",
+    "Yunsong-class"
+  ],
+  [
+    "Type 73 ARV"
+  ],
+  [
+    "Type 74"
+  ],
+  [
+    "Type 76 ARV"
+  ],
+  [
+    "Type 80"
+  ],
+  [
+    "Type 82 truck",
+    "HY472"
+  ],
+  [
+    "Type 84",
+    "WZ621",
+    "WZ653A"
+  ],
+  [
+    "Type 84 MLV"
+  ],
+  [
+    "Type 89 C2"
+  ],
+  [
+    "Type 89A"
+  ],
+  [
+    "Type 90-II ARV"
+  ],
+  [
+    "Type 90A MLV"
+  ],
+  [
+    "Type 92 Yitian"
+  ],
+  [
+    "Type08/VN1 assault bridge"
+  ],
+  [
+    "Ural-4320"
+  ],
+  [
+    "VME-102-40"
+  ],
+  [
+    "VME-203 ARV"
+  ],
+  [
+    "VP11"
+  ],
+  [
+    "VP22"
+  ],
+  [
+    "W90"
+  ],
+  [
+    "WZ-6",
+    "ASN-207"
+  ],
+  [
+    "WZ653 ARV"
+  ],
+  [
+    "Xian H-6"
+  ],
+  [
+    "Xian JH-7"
+  ],
+  [
+    "Xian Y-20"
+  ],
+  [
+    "Xian Y-7"
+  ],
+  [
+    "Xian YY-20A"
+  ],
+  [
+    "Yutu-class"
+  ],
+  [
+    "Yuwei-class"
+  ],
+  [
+    "ZBD-03 C2"
+  ],
+  [
+    "ZBD-04"
+  ],
+  [
+    "ZBD-04A"
+  ],
+  [
+    "ZBD-04A ARV"
+  ],
+  [
+    "ZBD-86"
+  ],
+  [
+    "ZBD-86A"
+  ],
+  [
+    "ZBL-08"
+  ],
+  [
+    "ZBL-19"
+  ],
+  [
+    "ZFB-05C MEDVAC"
+  ],
+  [
+    "ZJX-93",
+    "Type93"
+  ],
+  [
+    "ZSD-05"
+  ],
+  [
+    "ZSD-63"
+  ],
+  [
+    "ZSD-89"
+  ],
+  [
+    "ZSD-89A"
+  ],
+  [
+    "ZSD-89A C2"
+  ],
+  [
+    "ZSL-10"
+  ],
+  [
+    "ZSL-92"
+  ],
+  [
+    "ZSL-92A"
+  ],
+  [
+    "ZSL-92B"
+  ],
+  [
+    "ZSL-93"
+  ],
+  [
+    "ZTL-11"
+  ],
+  [
+    "ZTZ-59"
+  ],
+  [
+    "ZTZ-79"
+  ],
+  [
+    "ZTZ-88"
+  ],
+  [
+    "ZTZ-96"
+  ],
+  [
+    "ZTZ-99"
+  ],
+  [
+    "ZZC-01 Recce"
+  ],
+  [
+    "ZZC-02 Recce"
+  ],
+  [
+    "ZZC-06 Recce"
+  ],
+  [
+    "ZZC-07 Recce"
+  ],
+  [
+    "SA-20"
+  ],
+  [
+    "SA-15"
+  ],
+  [
+    "CSA-19"
+  ],
+  [
+    "CSA-21"
+  ],
+  [
+    "Tgt Eng Radar"
+  ],
+  [
+    "C2 Building"
+  ],
+  [
+    "Mobile Tgt"
+  ]
+]

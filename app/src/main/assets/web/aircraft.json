@@ -1,0 +1,181 @@
+{
+  "fighter": [
+    {
+      "name": "F-15",
+      "weapons": [
+        "AGM-158 JASSM",
+        "AGM-65 Maverick",
+        "APKWS II (AGR-20)",
+        "B61-12 (nuclear)",
+        "GBU-15",
+        "JDAM (GBU-31/32/38)",
+        "LJDAM (GBU-54)",
+        "Paveway II/III (GBU-10/12/24)",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)"
+      ],
+      "models": [
+        "E",
+        "EX"
+      ]
+    },
+    {
+      "name": "F-16",
+      "weapons": [
+        "AGM-158 JASSM",
+        "AGM-65 Maverick",
+        "AGM-88 HARM",
+        "APKWS II (AGR-20)",
+        "JDAM (GBU-31/32/38)",
+        "LJDAM (GBU-54)",
+        "Paveway II/III (GBU-12/24)",
+        "SDB I (GBU-39)",
+        "WCMD (CBU-103/104/105)"
+      ],
+      "models": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "F-22",
+      "weapons": [
+        "JDAM (GBU-32)",
+        "SDB I (GBU-39)"
+      ],
+      "models": [
+        "A"
+      ]
+    },
+    {
+      "name": "F-35",
+      "weapons": [
+        "B61-12 (nuclear)",
+        "JDAM (GBU-31/32/38)",
+        "Paveway II (GBU-12)",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)"
+      ],
+      "models": [
+        "A"
+      ]
+    }
+  ],
+  "bomber": [
+    {
+      "name": "B-1",
+      "weapons": [
+        "AGM-158 JASSM/JASSM-ER",
+        "JDAM (GBU-31/32/38)",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)",
+        "WCMD (CBU-103/104/105)"
+      ],
+      "models": [
+        "B"
+      ]
+    },
+    {
+      "name": "B-2",
+      "weapons": [
+        "B61-12 (nuclear)",
+        "GBU-28",
+        "GBU-57 MOP",
+        "JDAM (GBU-31/32)",
+        "Paveway III (GBU-24/27)"
+      ],
+      "models": [
+        "A"
+      ]
+    },
+    {
+      "name": "B-21",
+      "weapons": [
+        "AGM-158 JASSM-ER",
+        "B61-12 (nuclear)",
+        "GBU-57 MOP",
+        "JDAM (GBU-31/32/38)",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)"
+      ],
+      "models": []
+    },
+    {
+      "name": "B-52",
+      "weapons": [
+        "AGM-158 JASSM/JASSM-ER",
+        "AGM-84 Harpoon",
+        "AGM-86B ALCM (nuclear)",
+        "B61-12 (nuclear)",
+        "JDAM (GBU-31/32/38)",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)",
+        "WCMD (CBU-103/104/105)"
+      ],
+      "models": [
+        "H"
+      ]
+    }
+  ],
+  "support": [
+    {
+      "name": "A-10",
+      "weapons": [
+        "AGM-65 Maverick",
+        "APKWS II (AGR-20)",
+        "CBU-87",
+        "CBU-89",
+        "CBU-97/105 WCMD",
+        "GAU-8/A Avenger 30 mm cannon",
+        "Hydra-70 (unguided rockets)",
+        "JDAM (GBU-31/32/38)",
+        "LJDAM (GBU-54)",
+        "Mk 82/83/84 unguided bombs",
+        "Paveway II/III (GBU-10/12/16/24)"
+      ],
+      "models": [
+        "C"
+      ]
+    },
+    {
+      "name": "AC-130",
+      "weapons": [
+        "105 mm M102 howitzer",
+        "40 mm Bofors cannon",
+        "AGM-114 Hellfire",
+        "AGM-176 Griffin",
+        "APKWS II (AGR-20)",
+        "GAU-23/A 30 mm cannon",
+        "GBU-69/B Small Glide Munition",
+        "Hydra-70 (unguided rockets)",
+        "Mk 82 unguided bombs",
+        "SDB I (GBU-39)",
+        "SDB II StormBreaker (GBU-53)"
+      ],
+      "models": [
+        "J"
+      ]
+    },
+    {
+      "name": "MQ-9",
+      "weapons": [
+        "AGM-114 Hellfire",
+        "AGM-179 JAGM (Joint Air-to-Ground Missile)",
+        "AGM-176 Griffin",
+        "AGM-158C LRASM",
+        "GBU-12 Paveway II",
+        "GBU-38 JDAM",
+        "GBU-49 Enhanced Paveway II",
+        "GBU-54 LJDAM",
+        "SDB I (GBU-39)",
+        "GBU-69/B Small Glide Munition",
+        "G-CLAW"
+      ],
+      "models": [
+        "A",
+        "B",
+        "ER"
+      ]
+    }
+  ]
+}

@@ -244,6 +244,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
 
+    implementation 'androidx.webkit:webkit:1.11.0'
+
     // Recyclerview version depends on some androidx libraries which
     // are supplied by core, so they should be excluded.  Otherwise
     // bad things happen in the release builds after proguarding

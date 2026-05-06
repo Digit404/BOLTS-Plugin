@@ -1,0 +1,1527 @@
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    src: url(../res/MaterialSymbolsRounded.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url(../res/DMSans.ttf) format('truetype');
+    font-weight: 100 1000;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url(../res/DMSans-Italic.ttf) format('truetype');
+    font-weight: 100 1000;
+    font-style: italic;
+}
+
+body {
+    background-image: url(../res/BOLTS_monochrome.png);
+    background-size: 30vmin;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom 20px left 20px;
+}
+
+body.dark {
+    background-image: url(../res/BOLTS_monochrome_light.png);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #111;
+        --fg: #222;
+        --fg-hover: #333;
+        --text-hover: #bbb;
+        --text: #f8f8f8;
+    }
+
+    body {
+        background-image: url(../res/BOLTS_monochrome_light.png);
+    }
+}
+
+input[type='text']:focus-visible,
+input[type='number']:focus-visible,
+input[type='email']:focus-visible,
+input[type='password']:focus-visible,
+textarea:focus-visible {
+    box-shadow: var(--focus-outline);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-weight: 400;
+}
+
+/* generic classes */
+
+.main-container {
+    width: 100%;
+    max-width: 960px;
+    background: var(--fg);
+    border-radius: var(--border-radius);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    user-select: none;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &>* {
+        flex: 1;
+    }
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    background-color: var(--bg);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    max-height: 500px;
+    overflow-y: auto;
+
+    &:not(:has(.status-button)) {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:after {
+            content: "No targets selected";
+            color: var(--half);
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+input[type="text"].text-input,
+input[type="number"].text-input,
+input[type="email"].text-input,
+input[type="password"].text-input {
+    font-size: 20px;
+    width: 100%;
+    padding: 18px 20px;
+    font-family: var(--font);
+    border-radius: var(--border-radius);
+    background: var(--bg);
+    color: var(--text);
+    flex: 1;
+}
+
+.status-button {
+    position: relative;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius);
+    user-select: none;
+    cursor: pointer;
+    color: #111;
+
+    &::after {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1rem;
+        font-weight: 900;
+        color: #111;
+    }
+
+    &.green {
+        background-color: var(--green);
+
+        #mx &::after {
+            content: "CODE 1";
+        }
+
+        #bda &::after {
+            content: "SUCCESSFUL";
+        }
+    }
+
+    &.amber {
+        background-color: var(--yellow);
+
+        #mx &::after {
+            content: "CODE 2";
+        }
+
+        #bda &::after {
+            content: "UNKNOWN";
+        }
+    }
+
+    &.red {
+        background-color: var(--red);
+
+        #mx &::after {
+            content: "CODE 3";
+        }
+
+        #bda &::after {
+            content: "UNSUCCESSFUL";
+        }
+    }
+
+    &.grey {
+        background-color: var(--text);
+        color: var(--fg);
+
+        #bda &::after {
+            content: "NO ACTION";
+            color: var(--fg);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--text-hover);
+        }
+
+        &.green:hover {
+            background-color: var(--green-hover);
+        }
+
+        &.red:hover {
+            background-color: var(--red-hover);
+        }
+
+        &.amber:hover {
+            background-color: var(--yellow-hover);
+        }
+
+        &.blue:hover {
+            background-color: var(--blue-hover);
+        }
+    }
+}
+
+.meter-slider {
+    width: 100%;
+    height: 50px;
+    border-radius: var(--border-radius);
+    background-image: url(../res/rule-h.svg);
+    background-size: 10% 100%;
+    /* calculation to make the ticks exactly one value if you want that */
+    /* background-size: calc(1000% / var(--max)) 100%; */
+    background-position-x: -0.25%;
+    background-repeat: repeat-x;
+    background-position-y: center;
+    cursor: e-resize;
+    position: relative;
+    background-color: var(--bg);
+
+    --color: var(--text);
+    /* newer browsers support using attr for values */
+    --value: 0;
+    --value: attr(value number, 0);
+    --max: 100;
+    --max: attr(max number, 100);
+    counter-reset: meter var(--value);
+
+    --percentage: calc((var(--value) / var(--max)) * 100%);
+    --threshold: 3px;
+    /* Just above 5% so exactly 5% doesn't get caught in between */
+    /* if the percentage is below the threshold the label jumps to the other side */
+    --snap: clamp(-10%, calc((var(--percentage) - var(--threshold)) * 10000), 110%);
+
+    &::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        --bar-color: var(--color);
+        /* effect to make it turn red as it nears max */
+        --bar-color: color-mix(in srgb, var(--color), red calc((100% - var(--percentage) - 80%) * 3));
+        /* we use a gradient here because changing the shape of the element will ruin
+        the border radius unless we overflow: hidden */
+        background-image: linear-gradient(to right,
+                var(--bar-color) 0%,
+                var(--bar-color) var(--percentage),
+                transparent var(--percentage),
+                transparent 100%);
+        border-radius: var(--border-radius);
+    }
+
+    &::after {
+        content: counter(meter);
+        position: absolute;
+        top: 50%;
+        left: var(--percentage);
+        transform: translate(calc(-1 * var(--snap)), -50%);
+        color: var(--bg);
+        background-color: var(--text);
+        font-weight: 700;
+        font-size: 1.5rem;
+        padding: 5px 10px 5px 10px;
+        border-radius: var(--border-radius);
+        pointer-events: none;
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                50% 100%,
+                0 100%);
+
+        transition: top var(--qtime),
+            transform var(--qtime),
+            padding var(--qtime),
+            clip-path var(--qtime);
+    }
+
+    &.percentage::after {
+        content: counter(meter) "%";
+    }
+
+    &.pounds::after {
+        content: counter(meter) "\00A0lbs";
+    }
+
+    &.secondary {
+        background-color: var(--fg-hover);
+    }
+
+    &:hover::after,
+    &.hover::after {
+        top: -1.1em;
+        transform: translate(-50%, -50%);
+        padding: 5px 10px 8px 10px;
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 75%,
+                50% 100%,
+                0 75%);
+    }
+}
+
+.output {
+    background-color: var(--bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 250px;
+}
+
+.status-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.status-item {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: var(--fg);
+    color: #111;
+    border-radius: 1337px;
+}
+
+.status-1 .status-item {
+    background-color: var(--green);
+}
+
+.status-2 .status-item {
+    background-color: var(--yellow);
+}
+
+.status-3 .status-item {
+    background-color: var(--red);
+}
+
+scroll-input {
+    flex: 1;
+    max-width: 15em;
+}
+
+scroll-input::part(input) {
+    background-color: var(--bg);
+    color: var(--text);
+    border: none;
+    max-width: 10rem;
+    width: 100%;
+    border-radius: var(--border-radius);
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+radial-menu::part(trigger),
+radial-menu::part(button) {
+    font-family: var(--font-icons) !important;
+    font-variation-settings:
+        'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    border: 5px solid var(--bg);
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+}
+
+radial-menu::part(button) {
+    color: var(--bg);
+    background: var(--text-hover);
+}
+
+radial-menu::part(button active) {
+    background: var(--fg);
+    color: var(--text);
+}
+
+radial-menu::part(trigger) {
+    background: var(--text);
+    color: var(--fg);
+}
+
+.fox-input {
+    width: 100%;
+    max-width: none;
+
+    &::part(input) {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+#main-menu {
+    position: fixed;
+    bottom: 25px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 10;
+}
+
+.popup-background {
+    position: fixed;
+    z-index: 20;
+
+    .popup-content {
+        max-width: 100dvw;
+
+        @media (max-width: 600px) {
+            padding: 20px;
+        }
+    }
+}
+
+/* massive popup for fat fingers */
+.popup-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+    display: flex;
+    width: 75px;
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text);
+    background-color: transparent;
+    font-family: var(--font-icons);
+    border-radius: 1337px;
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--red);
+            color: var(--text);
+        }
+    }
+}
+
+.button {
+    background-color: var(--text);
+    color: var(--bg);
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+    flex: 1;
+
+    &.green {
+        background-color: var(--green);
+        color: #111;
+
+        @media (hover:hover) {
+            &:hover {
+                background-color: var(--green-hover);
+            }
+        }
+    }
+
+    &.red {
+        background-color: var(--red);
+        color: #111;
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--red-hover);
+            }
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--text-hover);
+        }
+    }
+}
+
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 700px;
+    max-width: 90dvw;
+
+    .tabs {
+        display: flex;
+        gap: 3px;
+        width: 100%;
+
+        .tab {
+            padding: 18px 20px;
+            background-color: var(--fg-hover);
+            color: #999;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            text-align: center;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            user-select: none;
+
+            &.active {
+                background-color: var(--bg);
+                color: var(--text);
+                cursor: auto;
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--text);
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        background-color: var(--bg);
+        padding: 20px;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        color: var(--text);
+        height: 300px;
+        overflow-y: auto;
+    }
+}
+
+.button-melt-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: stretch;
+
+    .button {
+        --border-radius: var(25px);
+        background-color: var(--bg);
+        color: var(--text);
+        border-radius: 0;
+
+        &:first-of-type {
+            border-top-left-radius: var(--border-radius);
+            border-bottom-left-radius: var(--border-radius);
+        }
+
+        &:last-of-type {
+            border-top-right-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+        }
+
+        &.pill {
+            --border-radius: 1337px;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--fg-hover);
+            }
+        }
+
+        &.active {
+            background-color: var(--text);
+            color: var(--fg);
+        }
+    }
+}
+
+#countermeasures .button.active {
+    background-color: var(--red);
+    color: #fff;
+}
+
+.aircraft-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .aircraft-option {
+        background-color: var(--fg);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        font-size: 1.2rem;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+
+        &.selected {
+            background-color: var(--text);
+            color: var(--fg);
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--text-hover);
+                }
+            }
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--fg-hover);
+            }
+        }
+    }
+}
+
+#loadout-popup {
+    .popup-content {
+        width: 90dvw;
+    }
+
+    #weapon-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        background-color: var(--bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        max-height: 80dvh;
+        overflow-y: auto;
+
+        .weapon-item {
+            background-color: var(--fg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            width: calc(50% - 10px);
+            user-select: none;
+
+            &.active {
+                background-color: var(--text);
+                color: var(--bg);
+            }
+
+            span {
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            scroll-input,
+            scroll-input::part(input) {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            justify-content: start;
+
+            .weapon-item {
+                width: 90%;
+            }
+        }
+    }
+}
+
+#ground-targets-popup {
+    .search {
+        --search-width: 600px;
+        position: relative;
+
+        input {
+            width: var(--search-width);
+            max-width: 80dvw;
+            height: 64px;
+        }
+
+        .submit-button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--text);
+            color: var(--bg);
+            border-radius: 1337px;
+            font-size: 2rem;
+            height: 48px;
+            width: 48px;
+            margin: 8px;
+            cursor: pointer;
+            user-select: none;
+            margin-left: 10px;
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--text-hover);
+                }
+            }
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            width: var(--search-width);
+            outline: 5px solid var(--fg);
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 5px;
+            border-radius: var(--border-radius);
+            background-color: var(--fg);
+            gap: 2px;
+            display: flex;
+            flex-direction: column;
+
+
+            span {
+                padding: 15px;
+                cursor: pointer;
+                background-color: var(--bg);
+                transition: background-color 0.1s ease, color 0.1s ease;
+
+                &.selected {
+                    background-color: var(--text);
+                    color: var(--fg);
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background-color: var(--text-hover);
+                        }
+                    }
+                }
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--fg-hover);
+                    }
+                }
+            }
+        }
+    }
+
+    .target-container {
+        background-color: var(--bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 400px;
+        overflow-y: auto;
+
+        .ground-target {
+            background-color: var(--fg);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .delete-button {
+                color: var(--text);
+                background-color: transparent;
+                font-size: 1.5rem;
+                cursor: pointer;
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: var(--red);
+                    }
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--fg-hover);
+                }
+            }
+        }
+
+        &:not(:has(.ground-target))::after {
+            content: "No targets selected";
+            color: var(--half);
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+    }
+}
+
+/* BDA */
+
+#add-air-engagement {
+    background-color: var(--text);
+    color: var(--bg);
+    border-radius: var(--border-radius);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+#air-engagements {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--bg);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    max-height: 300px;
+    overflow-y: auto;
+
+    &:not(:has(.air-engagement)) {
+        padding: 0;
+    }
+
+    .air-engagement {
+        background-color: var(--fg);
+        padding: 8px 15px;
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        user-select: none;
+
+        &.success {
+            color: var(--green);
+        }
+
+        &.failure {
+            color: var(--red);
+        }
+
+        .engagement-button {
+            background-color: var(--text);
+            color: #111;
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+
+            &.splash {
+                background-color: var(--green);
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--green-hover);
+                    }
+                }
+            }
+
+            &.vanish {
+                background-color: var(--red);
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--red-hover);
+                    }
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--text-hover);
+                }
+            }
+        }
+
+        .engagement-delete {
+            color: var(--text);
+            background-color: transparent;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    }
+}
+
+#expenditures-container {
+    background-color: var(--bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 60dvh;
+    overflow-y: auto;
+
+    .expenditure-item {
+        background-color: var(--fg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 40%;
+    }
+
+    .a2a-exp-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    #fuel-remaining-container {
+        &::after {
+            content: "lbs";
+            font-size: 2rem;
+            color: var(--half);
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #fuel-remaining {
+            appearance: textfield;
+            width: 10em;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+
+    #fuel-input {
+        /* more threshold for larger numbers */
+        --threshold: 20px;
+    }
+}
+
+#expenditures-weapons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    position: relative;
+
+    background-color: var(--fg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+
+    .expenditure-item {
+        background-color: var(--bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        flex: 1 1 400px;
+
+        .weapon-name {
+            font-size: 1.2rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+            text-wrap: nowrap;
+        }
+    }
+
+    &:empty::after {
+        content: "Empty";
+        font-style: italic;
+        color: var(--half);
+        width: 100%;
+        text-align: center;
+    }
+}
+
+#report-output {
+    position: relative;
+    display: flex;
+    background-color: var(--bg);
+    border-radius: var(--border-radius);
+    padding: 20px 40px;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 60dvh;
+    overflow-y: auto;
+
+    .title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        .callsign {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background-color: var(--text);
+            color: var(--fg);
+            padding: 5px 15px;
+            border-radius: var(--border-radius);
+        }
+
+        .aircraft {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--half);
+        }
+    }
+
+    .mission {
+        display: flex;
+        font-size: 2rem;
+        font-weight: 900;
+        background-color: var(--fg);
+        padding: 5px 15px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        justify-content: space-between
+    }
+
+    hr {
+        background-color: var(--fg);
+        flex: 0 0 auto;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        user-select: none;
+    }
+
+    .item-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: var(--fg);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        gap: 10px;
+        counter-reset: item-counter;
+
+        .item {
+            background-color: var(--bg);
+            padding: 15px 15px;
+            border-radius: var(--border-radius);
+            font-size: 1.2rem;
+            display: flex;
+            flex: 1 1 200px;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .weapon-item {
+            /* wider for large weapon names */
+            flex: 1 1 300px;
+
+            .weapon-quantity {
+                font-weight: 700;
+                background-color: var(--text);
+                color: var(--bg);
+                padding: 5px 10px;
+                border-radius: var(--border-radius);
+            }
+        }
+
+        .target-item {
+            &::after {
+                content: "No Action";
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--text);
+                border-radius: var(--border-radius);
+                color: var(--bg);
+                padding: 2px 8px;
+                font-size: 15px;
+                text-transform: uppercase;
+                font-weight: 900;
+            }
+
+            &.status-1::after {
+                content: "Successful";
+                background-color: var(--green);
+                color: #111;
+            }
+
+            &.status-2::after {
+                content: "Unsuccessful";
+                background-color: var(--red);
+                color: #111;
+            }
+
+            &.status-3::after {
+                content: "Unknown";
+                background-color: var(--yellow);
+                color: #111;
+            }
+        }
+
+        .maintenance-item {
+            &::after {
+                /* shouldn't be possible to be code 1 */
+                content: "Code 1";
+                position: absolute;
+                right: 5px;
+                background-color: var(--green);
+                border-radius: var(--border-radius);
+                color: #111;
+                padding: 2px 8px;
+                font-size: 0.9em;
+                text-transform: uppercase;
+                font-weight: 900;
+            }
+
+            &.code-2::after {
+                content: "Code 2";
+                background-color: var(--yellow);
+            }
+
+            &.code-3::after {
+                content: "Code 3";
+                background-color: var(--red);
+            }
+        }
+
+        .engagement-item {
+            &::before {
+                content: "Engagement " counter(item-counter);
+                counter-increment: item-counter;
+                text-transform: uppercase;
+            }
+
+            &::after {
+                content: "No Action";
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--text);
+                border-radius: var(--border-radius);
+                color: var(--bg);
+                padding: 2px 8px;
+                font-size: 15px;
+                text-transform: uppercase;
+                font-weight: 900;
+            }
+
+            &.success::after {
+                content: "Splash";
+                background-color: var(--green);
+                color: #111;
+            }
+
+            &.failure::after {
+                content: "Faded";
+                background-color: var(--red);
+                color: #111;
+            }
+        }
+
+        &:empty::after {
+            content: "No items.";
+            color: var(--half);
+            font-style: italic;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .fuel-report {
+        --value: 0;
+        background-color: var(--fg);
+        padding: 5px 10px;
+        font-weight: 700;
+        font-size: 1.5rem;
+        border-radius: var(--border-radius);
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        user-select: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #fff0;
+            width: calc(var(--value) * 100%);
+            z-index: 1;
+            backdrop-filter: invert(100%);
+            pointer-events: none;
+        }
+    }
+
+    .status-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .countermeasures-item {
+            background-color: var(--fg);
+            padding: 5px 10px;
+            border-radius: 1337px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 10px;
+            font-size: 1.2rem;
+
+            &.used {
+                background-color: var(--red);
+                color: #fff;
+            }
+        }
+    }
+
+    .a2a-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .a2a-item {
+            background-color: var(--fg);
+            padding: 5px 10px;
+            font-size: 1.2rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-weight: 600;
+            gap: 10px;
+
+            .a2a-quantity {
+                font-weight: 700;
+                background-color: var(--text);
+                color: var(--fg);
+                padding: 5px 10px;
+                border-radius: var(--border-radius);
+            }
+        }
+    }
+
+    &.empty {
+        height: 10em;
+
+        &::after {
+            content: "No report available.";
+            color: var(--half);
+            font-style: italic;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+#class-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: var(--green-hover);
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 100;
+
+    &::before {
+        content: "UNCLASSIFIED";
+    }
+
+    &.secret {
+        background-color: #f22;
+        color: var(--fg);
+
+        &::before {
+            content: "SECRET";
+        }
+    }
+
+    &.top-secret {
+        background-color: #fa3;
+
+        &::before {
+            content: "TOP SECRET";
+        }
+
+        &.sci {
+            background-color: #fd3;
+
+            &::before {
+                content: "TS/SCI";
+            }
+        }
+    }
+
+    &.confidential {
+        background-color: var(--blue-hover);
+
+        &::before {
+            content: "CONFIDENTIAL";
+        }
+    }
+
+    &.cui {
+        background-color: #a6b;
+
+        &::before {
+            content: "CUI";
+        }
+    }
+
+    &.rel::after {
+        content: "//REL TO USA, FVEY";
+    }
+
+    &.noforn::after {
+        content: "//NOFORN";
+    }
+}
+
+/* Settings */
+
+.settings-button {
+    position: fixed;
+    top: 40px;
+    /* -20px if no class banner */
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+    background-color: var(--text);
+    color: var(--bg);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+
+    .indicator {
+        width: 15px;
+        height: 15px;
+        background-color: var(--yellow);
+        border-radius: 1337px;
+
+        &.connected {
+            position: relative;
+            background-color: var(--green);
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                border-radius: 1337px;
+                background-color: var(--green);
+                animation: pulsate 2s infinite linear;
+            }
+        }
+
+        &.failed {
+            background-color: var(--red);
+        }
+    }
+
+    .icon {
+        font-family: var(--font-icons);
+        font-size: 2rem;
+    }
+}
+
+.connecting-popup {
+    .popup-content {
+        padding: 40px;
+        font-size: 1.5rem;
+    }
+
+    &.success .popup-content {
+        outline: 5px solid var(--green);
+    }
+}
+
+#settings-popup.failed {
+    .popup-content {
+        outline: 5px solid var(--red);
+
+        &::after {
+            content: "Connection failed!";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: var(--red);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 1337px;
+        }
+    }
+}
+
+.upload-button {
+    outline: 5px dashed var(--half);
+    outline-offset: -5px;
+    padding: 20px;
+}
+
+.toggle-option {
+    display: flex;
+    gap: 5px;
+
+    .toggle-button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        gap: 10px;
+        font-size: 1.2rem;
+        padding: 15px;
+        background-color: var(--bg);
+        color: var(--text);
+        cursor: pointer;
+        user-select: none;
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        &:first-child {
+            border-radius: 1337px 0 0 1337px;
+        }
+
+        &:last-child {
+            border-radius: 0 1337px 1337px 0;
+        }
+
+        &.active {
+            background-color: var(--text);
+            color: var(--bg);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--fg-hover);
+            }
+
+            &.active:hover {
+                background-color: var(--text-hover);
+            }
+        }
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: scale(1.75);
+        opacity: 0;
+    }
+}
+
+/* responsive design */
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+        padding-bottom: 5rem;
+    }
+
+    .main-container {
+        padding: 16px;
+    }
+
+    .option-group {
+        flex-direction: column;
+    }
+
+    scroll-input {
+        display: block;
+        width: 100%;
+        max-width: none;
+    }
+
+    scroll-input::part(input) {
+        width: 100%;
+        max-width: none;
+    }
+}

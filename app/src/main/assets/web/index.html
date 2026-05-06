@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLTS</title>
+    <link rel="stylesheet" href="./css/luminance.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./res/BOLTS_icon.png" type="image/png">
+</head>
+
+<body class="screen-center">
+    <div id="class-banner" class=""></div>
+    <img src="./res/BOLTS.png" alt="" class="logo hidden" id="logo" draggable="false">
+    <div class="main-container" id="targeting">
+        <h1>Targeting</h1>
+        <div class="flex row">
+            <div class="labelled-input wide">
+                <input type="text" name="callsign" id="callsign" class="text-input" placeholder="Enter callsign"
+                    autocomplete="off">
+                <label for="callsign">Callsign</label>
+            </div>
+            <div class="labelled-input wide">
+                <input type="text" name="mission" id="mission" class="text-input" placeholder="Enter mission"
+                    autocomplete="off">
+                <label for="mission">Mission Number</label>
+            </div>
+        </div>
+        <div class="flex stretch row">
+            <button class="button" id="aircraft-select-button">Select Aircraft</button>
+            <button class="button hidden" id="loadout-button">Modify Loadout</button>
+        </div>
+        <button class="button" id="ground-targets-button">Select Ground Targets</button>
+        <div class="option-group column">
+            <h2>Weapons</h2>
+            <div class="option-group">
+                <div class="option-group column">
+                    <h3>Fox 2</h3>
+                    <scroll-input value="0" min="0" max="20" sensitivity="0.2" id="fox2-input"
+                        class="fox-input"></scroll-input>
+                </div>
+                <div class="option-group column">
+                    <h3>Fox 3</h3>
+                    <scroll-input value="0" min="0" max="20" sensitivity="0.2" id="fox3-input"
+                        class="fox-input"></scroll-input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-container" id="bda">
+        <h1>BDA</h1>
+        <div class="button-grid" id="bda-targets"></div>
+        <div class="option-group column">
+            <div class="row space-between">
+                <h2>Air Engagements</h2>
+                <button id="add-air-engagement" class="icon">add</button>
+            </div>
+            <div id="air-engagements"></div>
+        </div>
+    </div>
+    <div class="main-container" id="expenditures">
+        <h1>Expenditures</h1>
+        <div class="" id="expenditures-container">
+            <div id="fuel-input-container" class="card padded flex column">
+                <div class="flex row wide space-between">
+                    <h2>Fuel</h2>
+                    <div class="labelled-input" id="fuel-remaining-container">
+                        <input type="number" id="fuel-remaining" class="text-input" placeholder="Fuel Remaining" autocomplete="off">
+                        <label for="fuel-remaining">Fuel Remaining</label>
+                    </div>
+                </div>
+                <div class="meter-slider pounds" min="0" max="20000" id="fuel-input" value="20000"></div>
+            </div>
+            <div class="flex row">
+                <div class="card padded flex row wide button-melt-group" id="countermeasures">
+                    <button class="button pill toggle-button" id="flares-button">Used Flares</button>
+                    <button class="button pill toggle-button" id="chaff-button">Used Chaff</button>
+                    <button class="button pill toggle-button" id="decoy-button">Used Decoy</button>
+                </div>
+            </div>
+            <h2>Main Weapons</h2>
+            <div class="a2a-exp-container">
+                <div class="expenditure-item">
+                    <h2>Fox 2</h2>
+                    <tally-ticker value="0" id="fox2-exp"></tally-ticker>
+                </div>
+                <div class="expenditure-item">
+                    <h2>Fox 3</h2>
+                    <tally-ticker value="0" id="fox3-exp"></tally-ticker>
+                </div>
+            </div>
+            <h2>Secondary Weapons</h2>
+            <div id="expenditures-weapons"></div>
+        </div>
+    </div>
+    <div class="main-container" id="mx">
+        <h1>Maintenance</h1>
+        <div class="button-grid" id="maintenance-grid"></div>
+        <div class="output" id="status-text">
+            <p>All systems Code 1.</p>
+        </div>
+    </div>
+    <div class="main-container" id="report">
+        <h1>Report Summary</h1>
+        <div id="report-output"></div>
+        <button class="pill button" id="submit-report">Submit</button>
+    </div>
+    <div class="popup-background hidden" id="aircraft-popup">
+        <div class="popup-content">
+            <h2>Select Aircraft</h2>
+            <div class="tab-container" id="aircraft-container"></div>
+        </div>
+    </div>
+    <div class="popup-background hidden" id="loadout-popup">
+        <div class="popup-content">
+            <h2>Select Loadout</h2>
+            <div id="weapon-container"></div>
+        </div>
+    </div>
+    <div class="popup-background hidden" id="ground-targets-popup">
+        <div class="popup-content">
+            <h2>Select Ground Targets</h2>
+            <div class="search">
+                <input type="text" id="ground-target-search" class="text-input" placeholder="Search" autocomplete="off">
+                <div class="submit-button icon" id="ground-target-submit">add</div>
+                <div class="autocomplete-list" id="ground-target-autocomplete-list"></div>
+            </div>
+            <div class="target-container" id="ground-targets-container"></div>
+        </div>
+    </div>
+    <radial-menu type="semi" id="main-menu">
+        <div onclick="showContainer('targeting')">assignment_add</div>
+        <div onclick="showContainer('bda')">my_location</div>
+        <div onclick="showContainer('expenditures')">shelves</div>
+        <div onclick="showContainer('mx')">plumbing</div>
+        <div onclick="showContainer('report')">assignment</div>
+    </radial-menu>
+    <!-- Settings button is hidden by default and is only visible when cordova is enabled -->
+    <div class="settings-button hidden" id="settings-button">
+        <div class="indicator" id="connection-indicator"></div>
+        <div class="icon">settings</div>
+    </div>
+    <div class="popup-background hidden" id="settings-popup">
+        <div class="popup-content">
+            <h2>TAK Connection Settings</h2>
+            <div class="flex stretch col">
+                <div class="flex row">
+                    <div class="labelled-input">
+                        <input type="text" id="tak-hostname" class="text-input" placeholder="TAK Hostname or IP"
+                            autocomplete="off">
+                        <label for="tak-hostname">TAK Hostname/IP</label>
+                    </div>
+                    <div class="labelled-input">
+                        <input type="text" id="tak-port" class="text-input" placeholder="TAK Port" autocomplete="off">
+                        <label for="tak-port">TAK Port</label>
+                    </div>
+                </div>
+                <div class="toggle-option">
+                    <button class="toggle-button active" id="tak-cert-option">
+                        <div class="icon">upload</div> Certificate
+                    </button>
+                    <button class="toggle-button" id="tak-login-option">
+                        <div class="icon">person</div> Username & Password
+                    </button>
+                </div>
+                <hr>
+                <div class="flex stretch" id="tak-cert-container">
+                    <input type="file" id="tak-cert" name="tak-cert" class="hidden">
+                    <label for="tak-cert" class="upload-button button pill text-center secondary">Upload TAK
+                        Certificate</label>
+                    <div class="labelled-input">
+                        <input type="password" id="tak-cert-password" class="text-input" placeholder="Cert Password"
+                            autocomplete="off">
+                        <label for="tak-cert-password">Cert Password</label>
+                    </div>
+                </div>
+                <div class="flex stretch row hidden" id="tak-login-container">
+                    <div class="labelled-input">
+                        <input type="text" id="tak-username" class="text-input" placeholder="TAK Username"
+                            autocomplete="off">
+                        <label for="tak-username">TAK Username</label>
+                    </div>
+                    <div class="labelled-input">
+                        <input type="password" id="tak-password" class="text-input" placeholder="TAK Password"
+                            autocomplete="off">
+                        <label for="tak-password">TAK Password</label>
+                    </div>
+                </div>
+                <div class="flex row">
+                    <button class="button pill" id="settings-save">Test & Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./libs/fuse.basic.min.js" defer></script>
+    <script src="./js/components.js" defer></script>
+    <script src="./js/air_engagements.js" defer></script>
+    <script src="./js/aircraft.js" defer></script>
+    <script src="./js/ground_targets.js" defer></script>
+    <script src="./js/maintenance.js" defer></script>
+    <script src="./js/report.js" defer></script>
+    <script src="./js/settings.js" defer></script>
+    <script src="./js/bolts.js" defer></script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>

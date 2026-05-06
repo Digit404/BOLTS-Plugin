@@ -9,6 +9,8 @@ import com.atakmap.android.dropdown.DropDownReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.LinearLayout;
 
@@ -19,6 +21,8 @@ import android.webkit.ConsoleMessage;
 import android.webkit.WebViewClient;
 import android.graphics.Bitmap;
 
+import androidx.webkit.WebViewAssetLoader;
+
 import com.atakmap.coremap.log.Log;
 
 public class WebViewDropDownReceiver extends DropDownReceiver implements
@@ -26,6 +30,8 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
     public static final String SHOW_WEBVIEW = "helloworld.example.webview";
 
     public static final String TAG = "WebViewDropDownReceiver";
+
+    private final WebViewAssetLoader assetLoader;
 
     final Context pluginContext;
     final Context appContext;
@@ -42,6 +48,11 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
 
         LayoutInflater inflater = LayoutInflater.from(pluginContext);
         ll = (LinearLayout) inflater.inflate(R.layout.blank_linearlayout, null);
+
+        assetLoader = new WebViewAssetLoader.Builder()
+                .setDomain("appassets.androidassets.net")
+                .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(pluginContext))
+                .build();
 
         // must be created using the application context otherwise this will fail
         mapView.post(new Runnable() {
@@ -70,7 +81,7 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
                 // cause subsequent calls to loadData not to fail - without this
                 // the web view would remain inconsistent on subsequent concurrent opens
                 htmlViewer.loadUrl("about:blank");
-                htmlViewer.setWebViewClient(new Client());
+                htmlViewer.setWebViewClient(new Client(assetLoader));
 
                 htmlViewer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
                         LayoutParams.MATCH_PARENT));
@@ -81,6 +92,26 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
     }
 
     public static class Client extends WebViewClient {
+        private final WebViewAssetLoader loader;
+
+        public Client(WebViewAssetLoader loader) {
+            this.loader = loader;
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            WebResourceResponse response = loader.shouldInterceptRequest(request.getUrl());
+            if (response == null) {
+                Log.d(TAG, "AssetLoader missed: " + request.getUrl());
+            }
+            return response;
+        }
+
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+            return loader.shouldInterceptRequest(android.net.Uri.parse(url));
+        }
+
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             Log.d(TAG, "started retrieving: " + url);
@@ -124,9 +155,16 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
         if (action != null && action.equals(SHOW_WEBVIEW)) {
             showDropDown(ll, HALF_WIDTH, FULL_HEIGHT,
                     FULL_WIDTH, HALF_HEIGHT, false, this);
-            this.htmlViewer.loadUrl("about:blank");
-            //this.htmlViewer.loadUrl("http://192.168.43.174:3000");
-            this.htmlViewer.loadUrl("http://10.5.21.57:443/");
+
+            // Ensure the WebView exists and the Client is set before loading
+            if (htmlViewer != null) {
+                htmlViewer.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        htmlViewer.loadUrl("https://appassets.androidassets.net/assets/web/index.html");
+                    }
+                });
+            }
         }
     }
 

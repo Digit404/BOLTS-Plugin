@@ -1,0 +1,258 @@
+:root,
+.light,
+.dark .dark {
+    --green: #4e7;
+    --green-hover: #1b4;
+    --blue: #47e;
+    --blue-hover: #25c;
+    --red: #e44;
+    --red-hover: #b22;
+    --yellow: #fb3;
+    --yellow-hover: #d80;
+    --fg: #fff;
+    --bg: #e8e8e8;
+    --fg-hover: #ddd;
+    --half: #999;
+    --dim-text: #777;
+    --text: #333;
+    --text-hover: #111;
+    --font: "DM Sans", sans-serif;
+    --font-mono: "Fira Code", "Cascadia Code", monospace;
+    --font-icons: "Material Symbols Rounded";
+    --border-radius: 10px;
+
+    --focus-outline: inset 0 0 0 3px var(--blue);
+    --qtime: 0.2s;
+
+    --shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    /* shadows only where contrast is needed */
+    --inset-shadow: inset var(--shadow);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    transition: background var(--qtime),
+        color var(--qtime),
+        box-shadow var(--qtime);
+    border: none;
+    outline: none;
+}
+
+.dark {
+    --bg: #111112;
+    --fg: #222223;
+    --fg-hover: #333334;
+    --dim-text: #aaa;
+    --text-hover: #bbb;
+    --text: #fff;
+}
+
+:host {
+    display: inline-block;
+}
+
+/* components */
+
+#radial {
+    position: relative;
+
+    #trigger {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #eee;
+        color: #000;
+        font-size: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1;
+        transition: transform .1s ease-in-out, background-color .1s ease-in-out;
+    }
+
+    #menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        --size: 3;
+        --radial-step: calc(360deg / var(--size));
+        --distance: 0;
+        --active-distance: -160px;
+        --offset: 0deg;
+
+        &.semicircle {
+            --radial-step: calc(180deg / (var(--size) - 1));
+            --offset: -90deg;
+        }
+
+        button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #999;
+            color: #000;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            left: 50%;
+            --scale: 1;
+            transform: translate(-50%, -50%) rotate(calc(var(--offset) + var(--index) * var(--radial-step))) translateY(var(--distance)) scale(var(--scale));
+            z-index: 0;
+            opacity: 0;
+            transition: transform .1s ease-in-out, background-color .1s ease-in-out, opacity .1s ease-in-out;
+
+            * {
+                /* rotate whatever's inside back */
+                transform: rotate(calc(-1*var(--offset) + -1 * var(--index) * var(--radial-step)));
+            }
+        }
+    }
+
+    &.active,
+    &.hold {
+        #menu {
+            --distance: var(--active-distance);
+        }
+
+        #trigger {
+            background: #999;
+            transform: scale(1.25);
+        }
+
+        #menu button {
+            --scale: 1.25;
+            opacity: 1;
+
+            &.active {
+                background: #eee;
+                color: #000;
+                --scale: 1.75;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+#scroll-input-container {
+    display: flex;
+
+    #scroll-input {
+        font-family: inherit;
+        --sensitivity: 1;
+        padding: 10px;
+        background-image: url(../res/rule.svg);
+        background-repeat: repeat-y;
+        text-align: right;
+        background-position-y: var(--position);
+        background-size: calc(2.5em * var(--sensitivity));
+        appearance: textfield;
+        cursor: ns-resize;
+        box-sizing: border-box;
+    }
+
+    &:has(.button) #scroll-input {
+        border-radius: 0 !important;
+    }
+
+    .button {
+        display: flex;
+        font-family: var(--font-icons);
+        font-size: 1.5em;
+        width: 75px;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--bg);
+        color: var(--text);
+        cursor: pointer;
+        user-select: none;
+
+        &:active {
+            background-color: var(--fg-hover);
+        }
+
+        &.decrement {
+            border-top-left-radius: var(--border-radius);
+            border-bottom-left-radius: var(--border-radius);
+        }
+
+        &.increment {
+            border-top-right-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--fg-hover);
+            }
+        }
+    }
+}
+
+#tally-ticker {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--text);
+    color: var(--fg);
+    font-size: 2rem;
+    border-radius: var(--border-radius);
+    user-select: none;
+    width: fit-content;
+
+    #minus,
+    #plus {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        gap: 30px;
+
+        &::after,
+        #plus-icon::after {
+            font-family: var(--font-icons);
+        }
+    }
+
+    #value {
+        min-width: 2em;
+        text-align: center;
+    }
+
+    #minus {
+        flex: 0 0 auto;
+
+        &::after {
+            content: "remove";
+        }
+    }
+
+    #plus-icon {
+        flex: 1 1 auto;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    #plus-icon::after {
+        content: "add";
+        margin-left: auto;
+    }
+
+    @media (hover: hover) {
+
+        #plus:hover,
+        #minus:hover,
+        #plus:active,
+        #minus:active {
+            background-color: var(--text-hover);
+        }
+    }
+}
