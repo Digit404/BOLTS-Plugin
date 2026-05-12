@@ -159,6 +159,7 @@ public class WebViewDropDownReceiver extends DropDownReceiver implements
         @android.webkit.JavascriptInterface
         public void postData(String data) {
             Log.d(TAG, "Data received from JS: " + data);
+            // TODO: Send file to ATAK filesystem
         }
     }
 
